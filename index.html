@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+
+    <script>
+        // Função para transformar o nome em capitalize
+        function capitalizeName(name) {
+            return name.replace(/\b\w/g, function(char) {
+                return char.toUpperCase();
+            });
+        }
+
+        function mostrarMensagem() {
+            var nome = document.getElementById('nome').value;
+            var nomeCapitalized = capitalizeName(nome);
+            var mensagem = nomeCapitalized ? nomeCapitalized + " foi cadastrado(a) com sucesso!" : "Paciente foi cadastrado com sucesso!";
+            
+            var mensagemElement = document.getElementById('mensagem');
+            mensagemElement.innerText = mensagem;
+            mensagemElement.classList.add('mensagem-sucesso'); // Adiciona a classe para estilizar o texto
+
+            // Limpar os campos do formulário
+            document.getElementById('nome').value = '';
+            document.getElementById('idade').value = '';
+            document.getElementById('endereco').value = '';
+            document.getElementById('telefone').value = '';
+
+            // Voltar à página inicial após 3 segundos
+            setTimeout(function() {
+                window.location.href ='inicio.html';
+            }, 3000);
+
+            return false; // Impede o envio do formulário para efeito de demonstração
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Paciente</h1>
+        <form onsubmit="return mostrarMensagem()">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required><br><br>
+
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" name="idade" required><br><br>
+
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" required><br><br>
+
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" required><br><br>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+        <p id="mensagem"></p>
+    </div>
+</body>
+</html>
+
+<style>
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+
+}   
+.funçãojs {
+    color: green;
+
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: red;
+    text-transform: capitalize;
+    font-family:fantasy;  
+
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    padding: 3px;
+    text-transform: capitalize;
+    font-weight: bolder;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+button {
+    width: 100%;
+    padding: 10px 5px;
+    background-color:red;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.5s ease
+}
+script{
+    color:rgb(11, 173, 11) ;
+    text-transform: capitalize;
+    font-weight: bolder;
+    font-style: italic;
+}
+    
+button:hover {
+    background-color: rgb(11, 173, 11);
+    padding: 11px 7px;
+    ;
+}
+.mensagem-sucesso {
+    color: green;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+
+</style>
